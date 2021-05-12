@@ -1,9 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-const httpOptions ={
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +10,9 @@ export class ProdutoService {
 
   getProdutos(){
     return this.http.get('/server/produto/lista');
+  }
+
+  getProdutoById(id:number){
+    return this.http.get('/server/produto/find-' + id);
   }
 }
