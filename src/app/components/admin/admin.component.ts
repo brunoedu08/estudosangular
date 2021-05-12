@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppPage } from 'e2e/src/app.po';
 import { ProdutoService } from '../../services/produto.service';
 
 @Component({
@@ -21,6 +22,10 @@ export class AdminComponent implements OnInit {
       err => console.error(err),
       () => console.log('Protutos carregados')
     );
+  }
+
+  deleteProdutoByID(id:number){
+    this.produtoService.deleteProdutoByID(id);
   }
 
 }

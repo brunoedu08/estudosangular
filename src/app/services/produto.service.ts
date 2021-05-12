@@ -24,4 +24,8 @@ export class ProdutoService {
     let body = JSON.stringify(produto);
     return this.http.post('/server/produto/add', body, httpOptions);
   }
+
+  deleteProdutoByID(id:number){
+    return this.http.delete('/server/produto/delete-' + id, httpOptions);
+  }
 }
