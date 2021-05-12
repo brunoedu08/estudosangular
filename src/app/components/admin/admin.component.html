@@ -1,0 +1,20 @@
+<div class="container">
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>ID</th>
+      </tr>
+      <tr *ngFor="let produto of produtos">
+        <td>
+          {{produto.nome}}
+        </td>
+        <td>
+          {{produto.valor}}
+        </td>
+        <td>
+          {{produto.id}}
+        </td>
+      </tr>
+    </table>
+  </div>
