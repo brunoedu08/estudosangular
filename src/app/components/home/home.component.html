@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="produtoForm" (ngSubmit)="submitRegistration()" novalidate>
+        <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Nome</label>
+                <input type="text" class="form-control" formControlName="nome" required autofocus />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label>Valor</label>
+                <input type="valor" class="form-control" formControlName="valor" required />
+            </div>
+        </div>
+        <div class="row text-center mt-2">
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" type="button" (click)="listarTodos()">Listar todos</button>
+            </div>
+        </div>
+    </form>
+</div>
