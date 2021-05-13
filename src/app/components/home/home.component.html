@@ -1,4 +1,5 @@
 <div class="container">
+  <span>Digite o nome e o valor do produto que deseja cadastrar</span>  
     <form [formGroup]="produtoForm" (ngSubmit)="submitRegistration()" novalidate>
         <div *ngIf="validMessage != ''">
             <h3 class="has-info">{{validMessage}}</h3>
@@ -20,7 +21,7 @@
                 <button type="submit" class="btn btn-primary">Cadastar</button>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary" type="button" (click)="listarTodos()">Listar todos</button>
+                <button class="btn btn-outline-primary" type="button" (click)="listarTodos()">Listar todos</button>
             </div>
         </div>
     </form>

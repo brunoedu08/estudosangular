@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
         }
       )
     }else{
-      this.validMessage = "Por favor, verifique o usuário antes de enviar"
+      this.validMessage = "Por favor, verifique se não há nada de errado antes de enviar"
     }
   }
   listarTodos(){

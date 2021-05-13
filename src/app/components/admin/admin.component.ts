@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppPage } from 'e2e/src/app.po';
+import { Router } from '@angular/router';
 import { ProdutoService } from '../../services/produto.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProdutoService } from '../../services/produto.service';
 export class AdminComponent implements OnInit {
   public produtos;
 
-  constructor(private produtoService:ProdutoService) { }
+  constructor(private produtoService:ProdutoService, private router:Router) { }
 
   ngOnInit(): void {
     this.getProdutos();
@@ -25,7 +25,17 @@ export class AdminComponent implements OnInit {
   }
 
   deleteProdutoByID(id:number){
-    this.produtoService.deleteProdutoByID(id);
+    this.produtoService.deleteProdutoByID(id).subscribe(
+      data =>{console.log(data);},
+      err => console.error(err),
+      () => console.log("Deletado")
+    );
+    this.getProdutos();
   }
 
+  prepararEdicao(produto){
+    this.produtoService.setProdutoParaEdicao(produto);
+    console.log(produto);
+    this.router.navigate(['/edit']);
+  }
 }
