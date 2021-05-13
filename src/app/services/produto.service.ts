@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { ProdutoDTO } from 'src/ProdutoDTO';
 
 const httpOptions ={
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -9,7 +10,7 @@ const httpOptions ={
   providedIn: 'root'
 })
 export class ProdutoService {
-  public produtoGuardado;
+  public produtoGuardado:ProdutoDTO;
   constructor(private http:HttpClient) { }
 
   getProdutos(){
@@ -23,6 +24,11 @@ export class ProdutoService {
   addProduto(produto){
     let body = JSON.stringify(produto);
     return this.http.post('/server/produto/add', body, httpOptions);
+  }
+
+  updateProduto(produto){
+    let bodyEdit = JSON.stringify(produto);
+    return this.http.post('server/produto/update-' + this.produtoGuardado.id, bodyEdit, httpOptions);
   }
 
   deleteProdutoByID(id:number){

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { ProdutoService } from 'src/app/services/produto.service';
 
 @Component({
@@ -8,13 +10,35 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class EditComponent implements OnInit {
   public produto;
+  produtoForm: FormGroup;
   constructor(private produtoService:ProdutoService) { }
 
   ngOnInit(): void {
     this.getProduto();
+    this.produtoForm = new FormGroup({
+      nome: new FormControl(''),
+      valor: new FormControl('')
+    });
   }
 
   getProduto(){
     this.produto = this.produtoService.getProdutoParaEdicao();
+  }
+
+  updateProduto(){
+    console.log("chegou");
+    if(this.produtoForm.valid) {
+      this.produtoService.updateProduto(this.produtoForm.value).subscribe(
+        data => {
+          this.produtoForm.reset();
+          return true;
+        },
+        error => {
+          return Observable.throw(error);
+        }
+      )
+    }else{
+      console.log("Por favor, verifique se não há nada de errado antes de enviar"); 
+    }
   }
 }

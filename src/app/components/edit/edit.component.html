@@ -1,14 +1,21 @@
-<div class = "container">
-    <div class="row-2">
-        Nome:
-        <div class = "col-6">
-            <input type="text" value='{{produto.nome}}'>
-        </div>
-    </div>
-    <div class="row-2">
-        Valor:
-        <div class = "col-6">
-            <input type="text" value='{{produto.valor}}'>
-        </div>
-    </div>
-</div>
+<div class="container">
+      <form [formGroup]="produtoForm" (ngSubmit)="updateProduto()" novalidate>
+          <div class="row">
+              <div class="col-6">
+                  <label>Nome</label>
+                  <input type="text" class="form-control" value='{{produto.nome}}' formControlName="nome" autofocus >
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <label>Valor</label>
+                  <input type="valor" class="form-control" value='{{produto.valor}}' formControlName="valor" >
+              </div>
+          </div>
+          <div class="row text-center mt-2">
+              <div class="col-2">
+                  <button type="submit" class="btn btn-primary">Atualizar</button>
+              </div>
+          </div>
+      </form>
+  </div>
