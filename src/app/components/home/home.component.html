@@ -1,18 +1,18 @@
 <div class="container">
-  <span>Digite o nome e o valor do produto que deseja cadastrar</span>  
+    <span>Digite o nome e o valor do produto que deseja cadastrar</span>
     <form [formGroup]="produtoForm" (ngSubmit)="submitRegistration()" novalidate>
-        <div *ngIf="validMessage != ''">
-            <h3 class="has-info">{{validMessage}}</h3>
+        <div class="{{typeMessage}}" *ngIf="validMessage != ''">
+            {{validMessage}}
         </div>
         <div class="row">
             <div class="col-6">
-                <label>Nome</label>
+                <label><b>Nome</b></label>
                 <input type="text" class="form-control" formControlName="nome" required autofocus />
             </div>
         </div>
         <div class="row">
             <div class="col-6">
-                <label>Valor</label>
+                <label><b>Valor</b></label>
                 <input type="valor" class="form-control" formControlName="valor" required />
             </div>
         </div>

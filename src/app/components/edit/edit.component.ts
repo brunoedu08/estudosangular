@@ -11,7 +11,9 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class EditComponent implements OnInit {
   public produto;
   produtoForm: FormGroup;
-  constructor(private produtoService:ProdutoService) { }
+  mensagem: string = "";
+  tipoMensagem: string = "";
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
     this.getProduto();
@@ -21,24 +23,27 @@ export class EditComponent implements OnInit {
     });
   }
 
-  getProduto(){
+  getProduto() {
     this.produto = this.produtoService.getProdutoParaEdicao();
   }
 
-  updateProduto(){
+  updateProduto() {
     console.log("chegou");
-    if(this.produtoForm.valid) {
+    if (this.produtoForm.valid) {
       this.produtoService.updateProduto(this.produtoForm.value).subscribe(
         data => {
           this.produtoForm.reset();
+          this.tipoMensagem = "alert alert-success";
+          this.mensagem = "Produto atualizado";
           return true;
         },
         error => {
           return Observable.throw(error);
         }
       )
-    }else{
-      console.log("Por favor, verifique se não há nada de errado antes de enviar"); 
+    } else {
+      this.tipoMensagem = "alert alert-danger";
+      this.mensagem = "Verifique novamente antes de enviar."
     }
   }
 }

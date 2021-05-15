@@ -1,25 +1,26 @@
 <div class="container">
   <table class="table table-sm">
-      <tr>
-        <th>Nome</th>
-        <th>Valor</th>
-        <th>ID</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let produto of produtos">
-        <td>
-          {{produto.nome}}
-        </td>
-        <td>
-          R$ {{produto.valor}}
-        </td>
-        <td>
-          {{produto.id}}
-        </td>
-        <td>
-          <button type="button" class="btn btn-outline-danger mr-2" (click)="deleteProdutoByID(produto.id)">Delete</button>
-          <button type="button" class="btn btn-outline-success mr-2" (click)="prepararEdicao(produto)">Editar</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+    <tr>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th>ID</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let produto of produtos">
+      <td>
+        {{produto.nome}}
+      </td>
+      <td>
+        R$ {{produto.valor}}
+      </td>
+      <td>
+        {{produto.id}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-danger mr-2"
+          (click)="deleteProdutoByID(produto.id)">Delete</button>
+        <button type="button" class="btn btn-outline-success mr-2" (click)="prepararEdicao(produto)">Editar</button>
+      </td>
+    </tr>
+  </table>
+</div>

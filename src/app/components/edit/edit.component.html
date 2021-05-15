@@ -1,15 +1,20 @@
 <div class="container">
+    <div class = "{{tipoMensagem}}" *ngIf="mensagem != ''">
+        {{mensagem}}
+    </div>
       <form [formGroup]="produtoForm" (ngSubmit)="updateProduto()" novalidate>
           <div class="row">
-              <div class="col-6">
-                  <label>Nome</label>
-                  <input type="text" class="form-control" value='{{produto.nome}}' formControlName="nome" autofocus >
+            <span>O nome do arquivo que você deseja alterar é {{produto.nome}}. Digite um novo nome se deseja alterá-lo.</span>  <br>
+            <div class="col-6">
+                  <label><b>Nome</b></label>
+                  <input type="text" class="form-control" formControlName="nome" autofocus >
               </div>
           </div>
           <div class="row">
               <div class="col-6">
-                  <label>Valor</label>
-                  <input type="valor" class="form-control" value='{{produto.valor}}' formControlName="valor" >
+                <span>O valor do arquivo que você deseja alterar é R${{produto.valor}}. Digite um novo valor se deseja alterá-lo.</span>  <br>  
+                <label><b>Valor</b></label>
+                  <input type="valor" class="form-control" formControlName="valor" >
               </div>
           </div>
           <div class="row text-center mt-2">

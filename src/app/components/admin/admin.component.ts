@@ -10,7 +10,7 @@ import { ProdutoService } from '../../services/produto.service';
 export class AdminComponent implements OnInit {
   public produtos;
 
-  constructor(private produtoService:ProdutoService, private router:Router) { }
+  constructor(private produtoService: ProdutoService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProdutos();
@@ -24,16 +24,16 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  deleteProdutoByID(id:number){
+  deleteProdutoByID(id: number) {
     this.produtoService.deleteProdutoByID(id).subscribe(
-      data =>{console.log(data);},
+      data => { console.log(data); },
       err => console.error(err),
       () => console.log("Deletado")
     );
     this.getProdutos();
   }
 
-  prepararEdicao(produto){
+  prepararEdicao(produto) {
     this.produtoService.setProdutoParaEdicao(produto);
     console.log(produto);
     this.router.navigate(['/edit']);

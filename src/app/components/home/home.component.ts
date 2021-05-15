@@ -12,9 +12,10 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class HomeComponent implements OnInit {
   produtoForm: FormGroup;
   validMessage: string = "";
+  typeMessage: string = "";
 
   constructor(private produtoService: ProdutoService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.produtoForm = new FormGroup({
@@ -23,8 +24,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  submitRegistration(){
-    if(this.produtoForm.valid) {
+  submitRegistration() {
+    if (this.produtoForm.valid) {
+      this.typeMessage = "alert alert-success";
       this.validMessage = "Seu produto foi enviado!";
       this.produtoService.addProduto(this.produtoForm.value).subscribe(
         data => {
@@ -35,11 +37,12 @@ export class HomeComponent implements OnInit {
           return Observable.throw(error);
         }
       )
-    }else{
+    } else {
+      this.typeMessage = "alert alert-danger";
       this.validMessage = "Por favor, verifique se não há nada de errado antes de enviar"
     }
   }
-  listarTodos(){
+  listarTodos() {
     this.router.navigate(['/admin']);
   }
 }
