@@ -46,4 +46,8 @@ export class EditComponent implements OnInit {
       this.mensagem = "Verifique novamente antes de enviar."
     }
   }
+  closeAlert(){
+    this.mensagem="";
+    this.tipoMensagem="";
+  }
 }

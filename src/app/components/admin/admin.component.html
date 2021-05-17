@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="{{tipoMensagem}} alert-dismissible fade show" *ngIf="mensagem != ''">
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()">
+    </button>
+    {{mensagem}}
+  </div>
   <table class="table table-sm">
     <tr>
       <th>Nome</th>

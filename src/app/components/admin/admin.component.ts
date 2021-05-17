@@ -9,6 +9,8 @@ import { ProdutoService } from '../../services/produto.service';
 })
 export class AdminComponent implements OnInit {
   public produtos;
+  mensagem: string = "";
+  tipoMensagem: string = "";
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
@@ -19,23 +21,40 @@ export class AdminComponent implements OnInit {
   getProdutos() {
     this.produtoService.getProdutos().subscribe(
       data => { this.produtos = data },
-      err => console.error(err),
-      () => console.log('Protutos carregados')
+      err => {
+        this.tipoMensagem = "alert alert-danger";
+        this.mensagem = err;
+      },
+      () => {
+        this.tipoMensagem = "alert alert-success";
+        this.mensagem = "Produtos carregados";
+      }
     );
   }
 
   deleteProdutoByID(id: number) {
     this.produtoService.deleteProdutoByID(id).subscribe(
-      data => { console.log(data); },
-      err => console.error(err),
-      () => console.log("Deletado")
+      data => {
+        console.log(data);
+        this.tipoMensagem = "alert alert-success";
+        this.mensagem = "Produto deletado com sucesso";
+        this.getProdutos();
+      },
+      err => {
+        this.tipoMensagem = "alert alert-danger";
+        this.mensagem = err;
+      }
     );
-    this.getProdutos();
   }
 
   prepararEdicao(produto) {
     this.produtoService.setProdutoParaEdicao(produto);
     console.log(produto);
     this.router.navigate(['/edit']);
+  }
+
+  closeAlert() {
+    this.mensagem = "";
+    this.tipoMensagem = "";
   }
 }

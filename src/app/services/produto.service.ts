@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { ProdutoDTO } from 'src/ProdutoDTO';
 
@@ -11,6 +10,7 @@ const httpOptions = {
 })
 export class ProdutoService {
   public produtoGuardado: ProdutoDTO;
+  public urlBack: string = "http"
   constructor(private http: HttpClient) { }
 
   getProdutos() {

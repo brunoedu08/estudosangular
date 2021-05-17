@@ -1,9 +1,11 @@
 <div class="container">
     <span>Digite o nome e o valor do produto que deseja cadastrar</span>
+    <div class="{{tipoMensagem}} alert-dismissible fade show" *ngIf="mensagem != ''">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()">
+        </button>
+        {{mensagem}}
+      </div>
     <form [formGroup]="produtoForm" (ngSubmit)="submitRegistration()" novalidate>
-        <div class="{{typeMessage}}" *ngIf="validMessage != ''">
-            {{validMessage}}
-        </div>
         <div class="row">
             <div class="col-6">
                 <label><b>Nome</b></label>

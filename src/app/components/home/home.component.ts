@@ -11,8 +11,8 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class HomeComponent implements OnInit {
   produtoForm: FormGroup;
-  validMessage: string = "";
-  typeMessage: string = "";
+  mensagem: string = "";
+  tipoMensagem: string = "";
 
   constructor(private produtoService: ProdutoService,
     private router: Router) { }
@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
 
   submitRegistration() {
     if (this.produtoForm.valid) {
-      this.typeMessage = "alert alert-success";
-      this.validMessage = "Seu produto foi enviado!";
+      this.tipoMensagem = "alert alert-success";
+      this.mensagem = "Seu produto foi enviado!";
       this.produtoService.addProduto(this.produtoForm.value).subscribe(
         data => {
           this.produtoForm.reset();
@@ -38,11 +38,16 @@ export class HomeComponent implements OnInit {
         }
       )
     } else {
-      this.typeMessage = "alert alert-danger";
-      this.validMessage = "Por favor, verifique se não há nada de errado antes de enviar"
+      this.tipoMensagem = "alert alert-danger";
+      this.mensagem = "Por favor, verifique se não há nada de errado antes de enviar"
     }
   }
   listarTodos() {
     this.router.navigate(['/admin']);
+  }
+  
+  closeAlert(){
+    this.mensagem = "";
+    this.tipoMensagem = "";
   }
 }

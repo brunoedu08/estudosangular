@@ -1,7 +1,9 @@
 <div class="container">
-    <div class = "{{tipoMensagem}}" *ngIf="mensagem != ''">
+    <div class="{{tipoMensagem}} alert-dismissible fade show" *ngIf="mensagem != ''">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAlert()">
+        </button>
         {{mensagem}}
-    </div>
+      </div>
       <form [formGroup]="produtoForm" (ngSubmit)="updateProduto()" novalidate>
           <div class="row">
             <span>O nome do arquivo que você deseja alterar é {{produto.nome}}. Digite um novo nome se deseja alterá-lo.</span>  <br>
