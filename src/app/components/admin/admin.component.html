@@ -22,9 +22,9 @@
         {{produto.id}}
       </td>
       <td>
+        <button type="button" class="btn btn-outline-success mr-2" (click)="prepararEdicao(produto)">Editar</button>
         <button type="button" class="btn btn-outline-danger mr-2"
           (click)="deleteProdutoByID(produto.id)">Delete</button>
-        <button type="button" class="btn btn-outline-success mr-2" (click)="prepararEdicao(produto)">Editar</button>
       </td>
     </tr>
   </table>
