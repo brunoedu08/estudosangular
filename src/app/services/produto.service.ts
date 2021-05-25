@@ -10,7 +10,6 @@ const httpOptions = {
 })
 export class ProdutoService {
   public produtoGuardado: ProdutoDTO;
-  public urlBack: string = "http"
   constructor(private http: HttpClient) { }
 
   getProdutos() {
