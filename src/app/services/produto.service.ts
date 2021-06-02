@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ProdutoDTO } from 'src/ProdutoDTO';
 
 const httpOptions = {
@@ -10,28 +11,29 @@ const httpOptions = {
 })
 export class ProdutoService {
   public produtoGuardado: ProdutoDTO;
+  private readonly url = environment.API;
   constructor(private http: HttpClient) { }
 
   getProdutos() {
-    return this.http.get('/server/produto/lista');
+    return this.http.get(`${this.url}/produto/lista`);
   }
 
   getProdutoById(id: number) {
-    return this.http.get('/server/produto/find-' + id);
+    return this.http.get(`${this.url}/produto/find-` + id);
   }
 
   addProduto(produto) {
     let body = JSON.stringify(produto);
-    return this.http.post('/server/produto/add', body, httpOptions);
+    return this.http.post(`${this.url}/produto/add`, body, httpOptions);
   }
 
   updateProduto(produto) {
     let bodyEdit = JSON.stringify(produto);
-    return this.http.post('server/produto/update-' + this.produtoGuardado.id, bodyEdit, httpOptions);
+    return this.http.post(`${this.url}/produto/update-` + this.produtoGuardado.id, bodyEdit, httpOptions);
   }
 
   deleteProdutoByID(id: number) {
-    return this.http.delete('/server/produto/delete-' + id);
+    return this.http.delete(`${this.url}/produto/delete-` + id);
   }
 
   setProdutoParaEdicao(produto) {

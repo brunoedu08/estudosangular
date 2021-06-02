@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
 
   getProdutos() {
     this.produtoService.getProdutos().subscribe(
-      data => { this.produtos = data },
+      res => { this.produtos = res },
       err => {
         this.tipoMensagem = "alert alert-danger";
         this.mensagem = err;
