@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: "http://bruno-prod-api.herokuapp.com"
+  API: "http://localhost:8080"
 };
 
 /*
